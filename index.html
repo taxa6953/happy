@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>گل‌افشانیِ آرزوها برای لیلی</title>
-  <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <!-- فونت فارسی وزیر -->
   <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" />
   <style>
     body {
       font-family: 'Vazir', sans-serif;
-      background-color: #f3f4f6;
+      background-color: #fef9f9;
       padding: 2rem;
+      overflow-x: hidden;
     }
+
     .preview-content {
       white-space: normal;
       word-wrap: break-word;
@@ -22,51 +22,83 @@
       text-align: justify;
       direction: rtl;
     }
+
     .preview-content p {
       margin-bottom: 0.75rem;
+    }
+
+    .petal {
+      position: fixed;
+      top: -50px;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/55/Sakura_petal.png');
+      background-size: cover;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-white rounded-2xl shadow-md max-w-sm mx-auto overflow-hidden">
-    <!-- تصویر کارت با نسبت ۳:۴ -->
+  <!-- کارت تبریک -->
+  <div class="relative z-10 bg-white rounded-2xl shadow-md max-w-sm mx-auto overflow-hidden">
     <div class="aspect-w-3 aspect-h-4">
-      <img
-        src="image-card1.PNG"
-        alt="گل‌افشانیِ آرزوها"
-        class="w-full h-full object-cover rounded-t-2xl"
-      />
+      <img src="image-card1.PNG" alt="تصویر کارت" class="w-full h-full object-cover rounded-t-2xl" />
     </div>
     <div class="p-4">
-      <!-- عنوان کارت -->
       <h1 class="text-xl font-bold text-gray-900 mb-2 text-center">
         گل‌افشانیِ آرزوها برای لیلی
       </h1>
-      <!-- متن شعر با استیکرها -->
       <div class="preview-content text-gray-700 text-sm">
         <p>✨🌸🎀 <strong>لیلی</strong> عزیز، روز دختر مبارک! 🎀🌸✨</p>
-        <p>🌺 <strong>گلِ لبخند تو</strong> شکفته به بُستانِ دل</p>
+        <p>🌺 گلِ لبخند تو شکفته به بُستانِ دل</p>
         <p>  💖 هر نکته‌ی شعرم ز عطر رؤیای تو خوشه‌چین است 💖</p>
-        <p>🌼 <strong>زرد گل‌های مریم</strong>، نرمیِ مه‌تابِ نگاهت</p>
-        <p>  🌹 و <strong>سرخ رُزهای عشق</strong>، رنگِ گونه‌های تو را به شیدایی می‌رانند 🌹</p>
-        <p>🌷 در باغِ دلم تو <strong>سلطانِ بهار و شکوفایی</strong></p>
+        <p>🌼 زرد گل‌های مریم، نرمیِ مه‌تابِ نگاهت</p>
+        <p>  🌹 و سرخ رُزهای عشق، رنگِ گونه‌های تو را به شیدایی می‌رانند 🌹</p>
+        <p>🌷 در باغِ دلم تو سلطانِ بهار و شکوفایی</p>
         <p>  🌿 هر نقشِ پرنیانت نقشی‌ست از حکایتِ نور و صفا 🌿</p>
         <p>🍃 با هر باد، ترانه‌ی تو پیچیده در گوشِ گل‌ها</p>
         <p>  💦 و هر قطره‌ی شبنم، نشانِ اشکِ شادیِ وجودت است 💦</p>
         <p>🎉 با گل و نرگس و یاسِ ناب، تبریکِ بی‌کرانم را پذیرا باش! 🌹</p>
       </div>
-      <!-- پلیر صوتی -->
       <audio controls class="block w-full mt-4">
         <source src="voice1.mp3" type="audio/mpeg">
         مرورگر شما از صدا پشتیبانی نمی‌کند.
       </audio>
     </div>
-    <!-- فوتر -->
     <footer class="text-center py-2 bg-gray-50 text-xs text-gray-500">
       طراحی و پیاده‌سازی: مهندس طاها سرگزی
     </footer>
   </div>
+
+  <!-- ریزش گلبرگ‌ها -->
+  <script>
+    // تولید گلبرگ به تعداد مشخص
+    const petalCount = 30;
+
+    for (let i = 0; i < petalCount; i++) {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (5 + Math.random() * 5) + 's';
+      petal.style.animationDelay = (Math.random() * 5) + 's';
+      document.body.appendChild(petal);
+    }
+  </script>
 
 </body>
 </html>
