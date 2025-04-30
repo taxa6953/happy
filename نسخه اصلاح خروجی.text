@@ -1,0 +1,95 @@
+const downloadHTML = () => {
+  const title = titleInput.value.trim() || 'عنوان کارت';
+  const imageNum = imageNumber.value;
+  const videoNum = videoNumber.value;
+  const audioNum = audioNumber.value;
+
+  // مدیا: تصویر یا ویدیو
+  let mediaElement = '';
+  if (useImage.checked && imageNum) {
+    mediaElement = `
+      <div class="aspect-w-3 aspect-h-4">
+        <img src="image-card${imageNum}.png" alt="تصویر کارت"
+             class="w-full h-full object-cover rounded-t-2xl" />
+      </div>`;
+  } else if (useVideo.checked && videoNum) {
+    mediaElement = `
+      <div class="aspect-w-3 aspect-h-4">
+        <video controls class="w-full h-full object-cover rounded-t-2xl">
+          <source src="video-card${videoNum}.mp4" type="video/mp4">
+          مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+        </video>
+      </div>`;
+  }
+
+  // صوت
+  let audioElement = '';
+  if (useAudio.checked && audioNum) {
+    audioElement = `
+      <audio controls class="block w-full mt-4">
+        <source src="voice${audioNum}.mp3" type="audio/mpeg">
+        مرورگر شما از صدا پشتیبانی نمی‌کند.
+      </audio>`;
+  }
+
+  // محتوای ادیتور
+  let editorData = editorInstance.getData();
+  editorData = editorData.replace(/<a\s+href=/g, '<a target="_blank" href=');
+  editorData = editorData.replace(/href="(www\.[^"]+)"/g, 'href="https://$1"');
+
+  // قالب نهایی (مطابق نمونه‌ی دوم)
+  const fullHTML = `
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+    <head>
+      <meta charset="UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>${title}</title>
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+      <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet"/>
+      <style>
+        body {
+          font-family: 'Vazir', sans-serif;
+          background-color: #fef9f9;
+          padding: 2rem;
+          overflow-x: hidden;
+        }
+        .preview-content {
+          white-space: normal;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          line-height: 1.7;
+          text-align: justify;
+          direction: rtl;
+        }
+        .preview-content p {
+          margin-bottom: 0.75rem;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="relative z-10 bg-white rounded-2xl shadow-md max-w-sm mx-auto overflow-hidden">
+        ${mediaElement}
+        <div class="p-4">
+          <h1 class="text-xl font-bold text-gray-900 mb-2 text-center">${title}</h1>
+          <div class="preview-content text-gray-700 text-sm">
+            ${editorData}
+          </div>
+          ${audioElement}
+        </div>
+        <footer class="text-center py-2 bg-gray-50 text-xs text-gray-500">
+          طراحی و پیاده‌سازی: مهندس طاها سرگزی
+        </footer>
+      </div>
+    </body>
+    </html>
+  `;
+
+  const blob = new Blob([fullHTML], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${title.replace(/\s+/g, '_')}.html`;
+  a.click();
+  URL.revokeObjectURL(url);
+};
