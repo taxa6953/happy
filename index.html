@@ -11,62 +11,15 @@
       font-family: 'Vazir', sans-serif;
       background-color: #fff9f9;
       padding: 2rem;
-      overflow-x: hidden;
-    }
-
-    .petal {
-      position: fixed;
-      top: -50px;
-      width: 30px;
-      height: 30px;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/55/Sakura_petal.png');
-      background-size: cover;
-      opacity: 0.8;
-      animation: fall linear infinite;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-    }
-
-    .lyrics-box {
-      font-size: 1.25rem;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      padding: 1rem;
-      border-radius: 1rem;
-      margin-top: 1rem;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .lyrics-box.show {
-      opacity: 1;
     }
   </style>
 </head>
 <body>
 
-  <!-- گلبرگ‌ها -->
-  <script>
-    const petalCount = 30;
-    for (let i = 0; i < petalCount; i++) {
-      const petal = document.createElement('div');
-      petal.classList.add('petal');
-      petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.animationDuration = (5 + Math.random() * 5) + 's';
-      petal.style.animationDelay = (Math.random() * 5) + 's';
-      document.body.appendChild(petal);
-    }
-  </script>
-
-  <!-- کارت تبریک با ویدیو -->
-  <div class="relative z-10 bg-white rounded-2xl shadow-md max-w-sm mx-auto overflow-hidden">
-    <div class="aspect-w-3 aspect-h-4 relative">
+  <!-- کارت اصلی -->
+  <div class="bg-white rounded-2xl shadow-md max-w-md mx-auto overflow-hidden relative z-10">
+    <!-- ویدیو -->
+    <div class="relative">
       <video id="mainVideo" autoplay muted playsinline loop class="w-full h-full object-cover rounded-t-2xl">
         <source src="video.mp4" type="video/mp4">
         مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
@@ -80,82 +33,53 @@
       </button>
     </div>
 
-    <div class="p-4">
-      <h1 class="text-xl font-bold text-gray-900 mb-2 text-center">
-        لیلی، زیباترین ترانه‌ی زندگی
-      </h1>
-      <p class="text-sm text-center text-gray-700">آهنگی که برایت پخش می‌شود، از دلِ من است به سوی دلِ تو.</p>
+    <!-- عنوان و متن -->
+    <div class="p-4 space-y-4">
+      <h1 class="text-xl font-bold text-center text-gray-800">لیلی، زیباترین ترانه‌ی زندگی</h1>
+      <p class="text-sm text-center text-gray-600">
+        آهنگی که برایت پخش می‌شود، از دلِ من است به سوی دلِ تو.
+      </p>
+
+      <!-- متن آهنگ -->
+      <div class="bg-gray-100 text-sm text-gray-800 rounded-xl p-4 leading-loose">
+        کلام عينيه في الغرام أحلى من الأغاني<br>
+        من كلمتين، من سلام ببقى حد تاني<br>
+        لما يميل قلبي أنا وياه يميل<br>
+        تفديه عيوني وعمري كله مش قليل<br><br>
+
+        ليلي، يا ليل يا ليلي<br>
+        يا ليل يا ليلي من غرامه ليلي طال<br>
+        حبيب سنيني بينه وبيني<br>
+        يا قلبي خطوة واحدة، يعني مش خيال<br><br>
+
+        يا روحي روحي معاه وفي جماله ضيعي<br>
+        طمع في سحر الحياة، حسنه مش طبيعي<br>
+        ده اللي القمر من عينيه والله غار<br>
+        دي الإبتسامة شمس طالعة بالنهار<br><br>
+
+        ليلي، يا ليل يا ليلي<br>
+        حبيب سنيني بينه وبيني<br>
+        آه يا ليلي<br>
+        ليلي، يا ليل يا ليلي<br>
+        يا قلبي خطوة واحدة، يعني مش خيال<br>
+        آه، آه، آه، آه
+      </div>
     </div>
 
+    <!-- فوتر -->
     <footer class="text-center py-2 bg-gray-50 text-xs text-gray-500">
       طراحی و پیاده‌سازی: مهندس طاها سرگزی
     </footer>
-  </div>
-
-  <!-- نمایش متن شعر -->
-  <div id="lyricsContainer" class="fixed bottom-10 left-0 w-full flex justify-center z-20 pointer-events-none">
-    <div id="lyricsText" class="lyrics-box max-w-xl"></div>
   </div>
 
   <script>
     const video = document.getElementById('mainVideo');
     const toggleButton = document.getElementById('soundToggle');
     const soundIcon = document.getElementById('soundIcon');
-    const lyricsText = document.getElementById("lyricsText");
-
-    const lyrics = [
-      { time: 1, text: "كلام عينيه في الغرام أحلى من الأغاني" },
-      { time: 6, text: "من كلمتين، من سلام ببقى حد تاني" },
-      { time: 11, text: "لما يميل قلبي أنا وياه يميل" },
-      { time: 16, text: "تفديه عيوني وعمري كله مش قليل" },
-      { time: 22, text: "ليلي، يا ليل يا ليلي" },
-      { time: 26, text: "يا ليل يا ليلي من غرامه ليلي طال" },
-      { time: 31, text: "حبيب سنيني بينه وبيني" },
-      { time: 36, text: "يا قلبي خطوة واحدة، يعني مش خيال" },
-      { time: 42, text: "يا روحي روحي معاه وفي جماله ضيعي" },
-      { time: 47, text: "طمع في سحر الحياة، حسنه مش طبيعي" },
-      { time: 52, text: "ده اللي القمر من عينيه والله غار" },
-      { time: 57, text: "دي الإبتسامة شمس طالعة بالنهار" },
-      { time: 63, text: "ليلي، يا ليل يا ليلي" },
-      { time: 68, text: "حبيب سنيني بينه وبيني" },
-      { time: 72, text: "آه يا ليلي" },
-      { time: 76, text: "ليلي، يا ليل يا ليلي" },
-      { time: 80, text: "يا قلبي خطوة واحدة، يعني مش خيال" },
-      { time: 85, text: "آه، آه، آه، آه" }
-    ];
-
-    let currentIndex = 0;
-
-    function showNextLyric() {
-      if (currentIndex >= lyrics.length) return;
-
-      const { time, text } = lyrics[currentIndex];
-      setTimeout(() => {
-        lyricsText.innerText = "";
-        lyricsText.classList.add("show");
-
-        let charIndex = 0;
-        const typing = setInterval(() => {
-          if (charIndex < text.length) {
-            lyricsText.innerText += text[charIndex++];
-          } else {
-            clearInterval(typing);
-            setTimeout(() => lyricsText.classList.remove("show"), 3500);
-          }
-        }, 50);
-
-        currentIndex++;
-        showNextLyric();
-      }, (time - (lyrics[currentIndex - 1]?.time || 0)) * 1000);
-    }
 
     toggleButton.addEventListener('click', () => {
       if (video.muted) {
         video.muted = false;
-        video.currentTime = 0;
-        video.play();
-        currentIndex = 0;
-        showNextLyric();
         soundIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 9l3 3m0 0l-3 3m3-3H9" />`;
       } else {
         video.muted = true;
@@ -163,5 +87,6 @@
       }
     });
   </script>
+
 </body>
 </html>
