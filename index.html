@@ -58,7 +58,7 @@
   <div class="relative z-10 bg-white rounded-2xl shadow-md max-w-sm mx-auto overflow-hidden">
     <div class="aspect-w-3 aspect-h-4 relative">
       <video id="mainVideo" autoplay muted playsinline loop class="w-full h-full object-cover rounded-t-2xl">
-        <source src="video.MP4" type="video/mp4">
+        <source src="video.mp4" type="video/mp4">
         مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
       </video>
 
@@ -92,6 +92,20 @@
       طراحی و پیاده‌سازی: مهندس طاها سرگزی
     </footer>
   </div>
+
+  <!-- اسکریپت -->
+  <script>
+    // افکت گلبرگ
+    const petalCount = 30;
+    for (let i = 0; i < petalCount; i++) {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (5 + Math.random() * 5) + 's';
+      petal.style.animationDelay = (Math.random() * 5) + 's';
+      document.body.appendChild(petal);
+    }
+
     // کنترل صدا
     const video = document.getElementById('mainVideo');
     const toggleButton = document.getElementById('soundToggle');
@@ -100,7 +114,7 @@
     toggleButton.addEventListener('click', () => {
       if (video.muted) {
         video.muted = false;
-        video.volume = 1;
+        video.play(); // لازم است برای باز شدن صدا مجدداً play شود
         soundIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 9l3 3m0 0l-3 3m3-3H9" />`; // آیکن صدادار
       } else {
         video.muted = true;
