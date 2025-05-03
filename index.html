@@ -58,7 +58,7 @@
   <div class="relative z-10 bg-white rounded-2xl shadow-md max-w-sm mx-auto overflow-hidden">
     <div class="aspect-w-3 aspect-h-4 relative">
       <video id="mainVideo" autoplay muted playsinline loop class="w-full h-full object-cover rounded-t-2xl">
-        <source src="video.mp4" type="video/mp4">
+        <source src="video.MP4" type="video/mp4">
         مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
       </video>
 
@@ -92,19 +92,6 @@
       طراحی و پیاده‌سازی: مهندس طاها سرگزی
     </footer>
   </div>
-
-  <!-- افکت گلبرگ -->
-  <script>
-    const petalCount = 30;
-    for (let i = 0; i < petalCount; i++) {
-      const petal = document.createElement('div');
-      petal.classList.add('petal');
-      petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.animationDuration = (5 + Math.random() * 5) + 's';
-      petal.style.animationDelay = (Math.random() * 5) + 's';
-      document.body.appendChild(petal);
-    }
-
     // کنترل صدا
     const video = document.getElementById('mainVideo');
     const toggleButton = document.getElementById('soundToggle');
