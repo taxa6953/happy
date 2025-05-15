@@ -1,92 +1,286 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لیلی، زیباترین ترانه‌ی زندگی</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Vazir', sans-serif;
-      background-color: #fff9f9;
-      padding: 2rem;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- کارت اصلی -->
-  <div class="bg-white rounded-2xl shadow-md max-w-md mx-auto overflow-hidden relative z-10">
-    <!-- ویدیو -->
-    <div class="relative">
-      <video id="mainVideo" autoplay muted playsinline loop class="w-full h-full object-cover rounded-t-2xl">
-        <source src="video.mp4" type="video/mp4">
-        مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-      </video>
-
-      <!-- دکمه فعال‌سازی صدا -->
-      <button id="soundToggle" class="absolute bottom-2 left-2 bg-white bg-opacity-80 rounded-full p-2 shadow-md">
-        <svg id="soundIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-    </div>
-
-    <!-- عنوان و متن -->
-    <div class="p-4 space-y-4">
-      <h1 class="text-xl font-bold text-center text-gray-800">لیلی، زیباترین ترانه‌ی زندگی</h1>
-      <p class="text-sm text-center text-gray-600">
-        آهنگی که برایت پخش می‌شود، از دلِ من است به سوی دلِ تو.
-      </p>
-
-      <!-- متن آهنگ -->
-      <div class="bg-gray-100 text-sm text-gray-800 rounded-xl p-4 leading-loose">
-        کلام عينيه في الغرام أحلى من الأغاني<br>
-        من كلمتين، من سلام ببقى حد تاني<br>
-        لما يميل قلبي أنا وياه يميل<br>
-        تفديه عيوني وعمري كله مش قليل<br><br>
-
-        ليلي، يا ليل يا ليلي<br>
-        يا ليل يا ليلي من غرامه ليلي طال<br>
-        حبيب سنيني بينه وبيني<br>
-        يا قلبي خطوة واحدة، يعني مش خيال<br><br>
-
-        يا روحي روحي معاه وفي جماله ضيعي<br>
-        طمع في سحر الحياة، حسنه مش طبيعي<br>
-        ده اللي القمر من عينيه والله غار<br>
-        دي الإبتسامة شمس طالعة بالنهار<br><br>
-
-        ليلي، يا ليل يا ليلي<br>
-        حبيب سنيني بينه وبيني<br>
-        آه يا ليلي<br>
-        ليلي، يا ليل يا ليلي<br>
-        يا قلبي خطوة واحدة، يعني مش خيال<br>
-        آه، آه، آه، آه
-      </div>
-    </div>
-
-    <!-- فوتر -->
-    <footer class="text-center py-2 bg-gray-50 text-xs text-gray-500">
-      طراحی و پیاده‌سازی: مهندس طاها سرگزی
-    </footer>
-  </div>
-
-  <script>
-    const video = document.getElementById('mainVideo');
-    const toggleButton = document.getElementById('soundToggle');
-    const soundIcon = document.getElementById('soundIcon');
-
-    toggleButton.addEventListener('click', () => {
-      if (video.muted) {
-        video.muted = false;
-        soundIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 9l3 3m0 0l-3 3m3-3H9" />`;
-      } else {
-        video.muted = true;
-        soundIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />`;
-      }
-    });
-  </script>
-
-</body>
-</html>
+<!-- The exported code uses Tailwind CSS. Install Tailwind CSS in your dev environment to ensure all styles work. -->
+<template>
+<div class="min-h-screen bg-gradient-to-b from-indigo-900 via-purple-900 to-indigo-900 text-white">
+<!-- Header Navigation -->
+<header class="container mx-auto px-6 py-4">
+<nav class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 flex items-center justify-center">
+<span class="text-white font-bold text-xl">NS</span>
+</div>
+<ul class="hidden md:flex ml-10 space-x-8">
+<li><a href="#" class="text-white hover:text-purple-300 cursor-pointer">Main</a></li>
+<li><a href="#" class="text-white hover:text-purple-300 cursor-pointer">Digital</a></li>
+<li><a href="#" class="text-white hover:text-purple-300 cursor-pointer">Showcase</a></li>
+<li><a href="#" class="text-white hover:text-purple-300 cursor-pointer">Portfolio</a></li>
+<li><a href="#" class="text-white hover:text-purple-300 cursor-pointer">Access</a></li>
+<li><a href="#" class="text-white hover:text-purple-300 cursor-pointer">Universe</a></li>
+</ul>
+</div>
+<button class="bg-gradient-to-r from-pink-500 to-purple-600 px-6 py-2 rounded-full text-white font-medium hover:opacity-90 transition-all cursor-pointer !rounded-button whitespace-nowrap">
+Contact Now
+</button>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="relative container mx-auto px-6 py-16 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img
+:src="heroBackgroundUrl"
+alt="Cosmic studio background"
+class="w-full h-full object-cover object-top"
+/>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 mb-10 md:mb-0">
+<h1 class="text-5xl font-bold mb-4">Nebula Studio Experience</h1>
+<p class="text-lg text-purple-100 mb-8 max-w-lg">
+Transform your digital presence with our cutting-edge design solutions powered by cosmic creativity. Our innovative approach ensures your brand stands out in the digital universe.
+</p>
+<a href="https://readdy.ai/home/c62fb055-ad29-40d7-a442-fa77344b1ae9/68e37184-9b78-4fa9-8c36-7ed3e998b34d" data-readdy="true" class="inline-block">
+  <button class="bg-gradient-to-r from-pink-500 to-purple-600 px-6 py-3 rounded-full text-white font-medium hover:opacity-90 transition-all cursor-pointer !rounded-button whitespace-nowrap">
+    Discover More
+  </button>
+</a>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="container mx-auto px-6 py-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="bg-gradient-to-br from-indigo-900/80 to-purple-900/80 backdrop-blur-sm p-6 rounded-xl border border-purple-700/30">
+<h3 class="text-2xl font-bold mb-3">Cosmic Design</h3>
+<p class="text-purple-200 mb-6">
+Our design philosophy draws inspiration from the vastness of space, creating immersive digital experiences that captivate and engage your audience.
+</p>
+<button class="bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-full text-white font-medium cursor-pointer !rounded-button whitespace-nowrap">
+Explore
+</button>
+</div>
+<!-- Feature 2 -->
+<div class="bg-gradient-to-br from-indigo-900/80 to-purple-900/80 backdrop-blur-sm p-6 rounded-xl border border-purple-700/30">
+<h3 class="text-2xl font-bold mb-3">Stellar Development</h3>
+<p class="text-purple-200 mb-6">
+We combine cutting-edge technologies with innovative approaches to create digital solutions that are both visually stunning and functionally superior.
+</p>
+<button class="bg-pink-600 hover:bg-pink-700 px-5 py-2 rounded-full text-white font-medium cursor-pointer !rounded-button whitespace-nowrap">
+Learn
+</button>
+</div>
+<!-- Feature 3 -->
+<div class="bg-gradient-to-br from-indigo-900/80 to-purple-900/80 backdrop-blur-sm p-6 rounded-xl border border-purple-700/30">
+<h3 class="text-2xl font-bold mb-3">Universal Reach</h3>
+<p class="text-purple-200 mb-6">
+Our strategies ensure your digital presence extends across the entire digital universe, reaching your target audience wherever they may be.
+</p>
+<button class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-full text-white font-medium cursor-pointer !rounded-button whitespace-nowrap">
+Discover
+</button>
+</div>
+</div>
+</section>
+<!-- Categories Grid -->
+<section class="container mx-auto px-6 py-12">
+<div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+<div v-for="(category, index) in categories" :key="index" class="group relative cursor-pointer">
+<div class="overflow-hidden rounded-lg h-32">
+<img :src="category.image" :alt="category.name" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" />
+<div class="absolute inset-0 bg-gradient-to-t from-purple-900/90 to-transparent"></div>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-3 text-center">
+<h4 class="text-white font-medium">{{ category.name }}</h4>
+<p class="text-purple-200 text-xs">{{ category.description }}</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Features -->
+<section class="container mx-auto px-6 py-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Interactive Feature 1 -->
+<div class="bg-gradient-to-br from-indigo-900/80 to-purple-900/80 backdrop-blur-sm p-6 rounded-xl border border-purple-700/30">
+<h3 class="text-2xl font-bold mb-6">Quantum Analytics</h3>
+<div class="flex justify-center mb-6">
+<img :src="analyticsImage" alt="Analytics visualization" class="rounded-lg w-full h-48 object-cover" />
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="text-center">
+<div class="text-purple-300 text-sm">INSIGHTS</div>
+<div class="text-white font-bold">EXCLUSIVE</div>
+</div>
+<div class="text-center">
+<div class="text-purple-300 text-sm">REPORTS</div>
+<div class="text-white font-bold">EXCLUSIVE</div>
+</div>
+</div>
+</div>
+<!-- Interactive Feature 2 -->
+<div class="bg-gradient-to-br from-indigo-900/80 to-purple-900/80 backdrop-blur-sm p-6 rounded-xl border border-purple-700/30">
+<h3 class="text-2xl font-bold mb-6">Nebula Integration</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-indigo-800/50 p-4 rounded-lg flex flex-col items-center cursor-pointer">
+<el-icon class="text-3xl text-cyan-400 mb-2"><Connection /></el-icon>
+<div class="text-white text-sm">CLOUD SYSTEMS</div>
+</div>
+<div class="bg-indigo-800/50 p-4 rounded-lg flex flex-col items-center cursor-pointer">
+<el-icon class="text-3xl text-pink-400 mb-2"><Brush /></el-icon>
+<div class="text-white text-sm">DESIGN TOOLS</div>
+</div>
+<div class="bg-indigo-800/50 p-4 rounded-lg flex flex-col items-center cursor-pointer">
+<el-icon class="text-3xl text-yellow-400 mb-2"><DataAnalysis /></el-icon>
+<div class="text-white text-sm">DATA ANALYSIS</div>
+</div>
+<div class="bg-indigo-800/50 p-4 rounded-lg flex flex-col items-center cursor-pointer">
+<el-icon class="text-3xl text-green-400 mb-2"><Monitor /></el-icon>
+<div class="text-white text-sm">SMART DISPLAY</div>
+</div>
+</div>
+<div class="mt-4 grid grid-cols-2 gap-4">
+<div class="text-center">
+<div class="text-purple-300 text-sm">API COUNT</div>
+<div class="text-white font-bold">150+</div>
+</div>
+<div class="text-center">
+<div class="text-purple-300 text-sm">PLATFORMS</div>
+<div class="text-white font-bold">25+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Feature 3 -->
+<div class="bg-gradient-to-br from-indigo-900/80 to-purple-900/80 backdrop-blur-sm p-6 rounded-xl border border-purple-700/30">
+<h3 class="text-2xl font-bold mb-6">Galactic Workspace</h3>
+<div class="flex justify-center mb-6">
+<img :src="workspaceImage" alt="Modern workspace" class="rounded-lg w-full h-48 object-cover" />
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="text-center">
+<div class="text-purple-300 text-sm">CREATIVE</div>
+<div class="text-white font-bold">PREMIUM</div>
+</div>
+<div class="text-center">
+<div class="text-purple-300 text-sm">FLEXIBLE</div>
+<div class="text-white font-bold">PREMIUM</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="container mx-auto px-6 py-12 bg-white/5 backdrop-blur-sm rounded-xl">
+<h2 class="text-3xl font-bold mb-8 text-center">Cosmic Team</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Team Member 1 -->
+<div class="bg-gradient-to-br from-purple-900/80 to-indigo-900/80 p-6 rounded-xl border border-purple-700/30">
+<div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+<span class="text-white text-2xl font-bold">JD</span>
+</div>
+<h3 class="text-xl font-bold text-center mb-1">Julian Dex</h3>
+<p class="text-purple-300 text-center text-sm mb-4">Design Lead</p>
+</div>
+<!-- Team Member 2 -->
+<div class="bg-gradient-to-br from-pink-900/80 to-purple-900/80 p-6 rounded-xl border border-purple-700/30">
+<div class="w-24 h-24 bg-gradient-to-r from-pink-500 to-red-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+<span class="text-white text-2xl font-bold">SL</span>
+</div>
+<h3 class="text-xl font-bold text-center mb-1">Sophia Lux</h3>
+<p class="text-purple-300 text-center text-sm mb-4">Development Lead</p>
+</div>
+<!-- Team Member 3 -->
+<div class="bg-gradient-to-br from-indigo-900/80 to-blue-900/80 p-6 rounded-xl border border-purple-700/30">
+<div class="w-24 h-24 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+<span class="text-white text-2xl font-bold">AG</span>
+</div>
+<h3 class="text-xl font-bold text-center mb-1">Alex Glow</h3>
+<p class="text-purple-300 text-center text-sm mb-4">Strategy Director</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="mt-16 bg-indigo-950 py-8">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-center mb-8">
+<div class="mb-6 md:mb-0">
+<div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 flex items-center justify-center">
+<span class="text-white font-bold text-xl">NS</span>
+</div>
+</div>
+<div class="flex space-x-4">
+<a href="#" class="text-white hover:text-purple-300 cursor-pointer">
+<el-icon class="text-xl"><Location /></el-icon>
+</a>
+<a href="#" class="text-white hover:text-purple-300 cursor-pointer">
+<el-icon class="text-xl"><Message /></el-icon>
+</a>
+<a href="#" class="text-white hover:text-purple-300 cursor-pointer">
+<el-icon class="text-xl"><Phone /></el-icon>
+</a>
+<a href="#" class="text-white hover:text-purple-300 cursor-pointer">
+<el-icon class="text-xl"><Share /></el-icon>
+</a>
+</div>
+</div>
+<div class="border-t border-purple-800/50 pt-6 text-center">
+<p class="text-purple-300 text-sm">© 2025 Nebula Studio. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</div>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { Connection, Brush, DataAnalysis, Monitor, Location, Message, Phone, Share } from '@element-plus/icons-vue';
+// Hero background image
+const heroBackgroundUrl = 'https://readdy.ai/api/search-image?query=futuristic%20cosmic%20studio%20space%20with%20purple%20and%20blue%20gradient%2C%20modern%20office%20chair%2C%20floor%20lamp%2C%20and%20decorative%20plants%2C%20digital%20art%20style%20with%20glowing%20particles%20and%20stars%2C%20dark%20background%20with%20vibrant%20accent%20colors&width=1200&height=600&seq=123456&orientation=landscape';
+// Analytics visualization image
+const analyticsImage = 'https://readdy.ai/api/search-image?query=futuristic%20data%20visualization%20interface%20with%20glowing%20circles%20and%20connections%2C%20cosmic%20purple%20and%20blue%20color%20scheme%2C%20holographic%20display%20with%20analytics%20charts%20and%20graphs%2C%20dark%20space%20background%20with%20stars&width=400&height=300&seq=123457&orientation=landscape';
+// Workspace image
+const workspaceImage = 'https://readdy.ai/api/search-image?query=modern%20futuristic%20workspace%20with%20cosmic%20theme%2C%20sleek%20desk%20with%20holographic%20displays%2C%20ambient%20purple%20and%20blue%20lighting%2C%20minimalist%20design%20with%20high-tech%20elements%2C%20dark%20space-inspired%20background%20with%20subtle%20star%20elements&width=400&height=300&seq=123458&orientation=landscape';
+// Categories data
+const categories = [
+{
+name: 'Cosmic',
+description: 'Space-inspired designs',
+image: 'https://readdy.ai/api/search-image?query=futuristic%20cosmic%20space%20scene%20with%20purple%20and%20blue%20nebula%20clouds%2C%20glowing%20stars%20and%20particles%2C%20digital%20art%20style%20with%20vibrant%20colors%20against%20dark%20background&width=200&height=200&seq=123459&orientation=squarish'
+},
+{
+name: 'Flux',
+description: 'Dynamic interfaces',
+image: 'https://readdy.ai/api/search-image?query=abstract%20flowing%20digital%20interface%20with%20purple%20and%20blue%20gradient%20waves%2C%20futuristic%20technology%20concept%20with%20glowing%20elements%2C%20cosmic%20themed%20with%20motion%20blur%20effect&width=200&height=200&seq=123460&orientation=squarish'
+},
+{
+name: 'Pulse',
+description: 'Rhythmic animations',
+image: 'https://readdy.ai/api/search-image?query=abstract%20digital%20pulse%20visualization%20with%20concentric%20circles%20in%20purple%20and%20blue%2C%20cosmic%20energy%20waves%20radiating%20outward%2C%20futuristic%20technology%20concept%20against%20dark%20space%20background&width=200&height=200&seq=123461&orientation=squarish'
+},
+{
+name: 'Nexus',
+description: 'Connected systems',
+image: 'https://readdy.ai/api/search-image?query=futuristic%20network%20connection%20visualization%20with%20glowing%20nodes%20and%20lines%20in%20purple%20and%20blue%2C%20cosmic%20digital%20web%20concept%2C%20interconnected%20data%20points%20against%20dark%20space%20background&width=200&height=200&seq=123462&orientation=squarish'
+},
+{
+name: 'Ethereal',
+description: 'Lightweight solutions',
+image: 'https://readdy.ai/api/search-image?query=ethereal%20cosmic%20cloud%20formation%20with%20translucent%20purple%20and%20blue%20wisps%2C%20dreamlike%20digital%20art%20with%20glowing%20particles%2C%20mystical%20space%20atmosphere%20against%20dark%20background&width=200&height=200&seq=123463&orientation=squarish'
+},
+{
+name: 'Dimension',
+description: 'Spatial concepts',
+image: 'https://readdy.ai/api/search-image?query=abstract%203D%20dimensional%20space%20concept%20with%20purple%20and%20blue%20geometric%20shapes%2C%20cosmic%20digital%20art%20with%20depth%20perception%2C%20futuristic%20portal%20design%20against%20dark%20space%20background&width=200&height=200&seq=123464&orientation=squarish'
+}
+];
+</script>
+<style scoped>
+.bg-gradient-to-br {
+background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+.bg-gradient-to-r {
+background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+.bg-gradient-to-t {
+background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+.bg-gradient-to-b {
+background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+</style>
